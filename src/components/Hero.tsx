@@ -101,28 +101,69 @@ const Hero = () => {
       {/* Main Hero Section */}
       <section
         id="home"
-        className="relative overflow-hidden bg-gradient-to-b from-warm-50 via-warm-100 to-white dark:from-gray-900 dark:via-gray-900/90 dark:to-gray-950 pt-10 pb-20"
+        className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-warm-100 to-sage-50 dark:from-gray-900 dark:via-primary-950/30 dark:to-black pt-10 pb-20"
       >
-        {/* Decorative immersive background with parallax and gradient mesh */}
+        {/* Decorative immersive background with video + overlays */}
         <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-          {/* Soft gradient mesh (multiple radial gradients) */}
+          {/* Background video (place your file in public/media/hero-bg.mp4) */}
+          <video
+            className="absolute inset-0 w-full h-full object-cover opacity-80 dark:opacity-65 motion-reduce:opacity-30"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          >
+            <source src="/media/video1.mp4" type="video/mp4" />
+          </video>
+
+          {/* Softer tint overlay for better visibility */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-white/5 to-transparent dark:from-black/35 dark:via-black/20 dark:to-transparent" />
+
+          {/* Lighter gradient mesh */}
           <div
-            className="absolute inset-0 opacity-80 dark:opacity-50"
+            className="absolute inset-0 opacity-20 dark:opacity-15"
             style={{
               backgroundImage:
-                'radial-gradient(60rem 30rem at 20% -10%, rgba(240, 225, 210, .65), transparent 60%),\
-                 radial-gradient(50rem 26rem at 120% 10%, rgba(186, 230, 253, .40), transparent 60%),\
-                 radial-gradient(40rem 22rem at -10% 80%, rgba(209, 250, 229, .38), transparent 60%)',
+                'radial-gradient(70rem 36rem at 20% -10%, rgba(250, 204, 21, .14), transparent 60%),' +
+                'radial-gradient(60rem 30rem at 115% 5%, rgba(8, 145, 178, .14), transparent 60%),' +
+                'radial-gradient(50rem 26rem at -10% 85%, rgba(16, 185, 129, .12), transparent 60%),' +
+                'radial-gradient(40rem 22rem at 80% 100%, rgba(186, 230, 253, .10), transparent 60%)',
             }}
           />
 
           {/* Conic sweep glow */}
           <div
-            className="absolute -top-40 right-1/2 translate-x-1/2 w-[80rem] h-[80rem] opacity-30 blur-3xl dark:opacity-20"
+            className="absolute -top-40 right-1/2 translate-x-1/2 w-[80rem] h-[80rem] opacity-20 blur-3xl dark:opacity-15"
             style={{
               background:
-                'conic-gradient(from 0deg at 50% 50%, rgba(8,145,178,.35), rgba(99,102,241,.25), rgba(16,185,129,.35), rgba(8,145,178,.35))',
+                'conic-gradient(from 0deg at 50% 50%, rgba(8,145,178,.25), rgba(99,102,241,.18), rgba(16,185,129,.25), rgba(8,145,178,.25))',
             }}
+          />
+
+          {/* Subtle dotted texture */}
+          <div
+            className="absolute inset-0 opacity-[0.025] dark:opacity-[0.03]"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
+              backgroundSize: '22px 22px',
+              color: 'rgba(17,24,39,0.8)',
+            }}
+          />
+
+          {/* Noise overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.02] mix-blend-multiply dark:opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\"><filter id=\"n\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.8\" numOctaves=\"2\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23n)\" opacity=\"0.35\"/></svg>')",
+              backgroundSize: 'auto',
+            }}
+          />
+
+          {/* Angled highlight stripe */}
+          <div
+            className="absolute -right-48 top-0 h-[140%] w-[28rem] rotate-12 bg-gradient-to-b from-primary-200/40 via-transparent to-secondary-200/40 dark:from-sage-900/20 dark:via-transparent dark:to-primary-900/20 blur-2xl"
           />
 
           {/* Existing parallax blobs */}
@@ -134,22 +175,6 @@ const Hero = () => {
             className="absolute -bottom-32 -left-24 w-[28rem] h-[28rem] bg-warm-200/40 dark:bg-primary-800/20 rounded-full blur-3xl"
             style={{ transform: `translateY(${parallax * -0.03}px)` }}
           />
-
-          {/* Subtle dotted texture */}
-          <div
-            className="absolute inset-0 opacity-[0.06] dark:opacity-10"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
-              backgroundSize: '22px 22px',
-              color: 'rgba(17,24,39,0.8)',
-            }}
-          />
-
-          {/* Angled highlight stripe */}
-          <div
-            className="absolute -right-48 top-0 h-[140%] w-[28rem] rotate-12 bg-gradient-to-b from-primary-200/40 via-transparent to-secondary-200/40 dark:from-sage-900/20 dark:via-transparent dark:to-primary-900/20 blur-2xl"
-          />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,9 +182,15 @@ const Hero = () => {
             {/* Left Content */}
             <div className="space-y-8 animate-slide-up">
               <div className="space-y-6">
-                <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 dark:bg-sage-900/30 dark:text-sage-300 text-sm w-max border border-primary-200/60 dark:border-sage-700">
-                  Impulsa tu negocio con excelencia e innovación
-                </p>
+                {/* Promo badges */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white text-sm w-max shadow">
+                    🎁 Primera asesoría gratis
+                  </span>
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 dark:bg-sage-900/30 dark:text-sage-300 text-sm w-max border border-primary-200/60 dark:border-sage-700">
+                    Impulsa tu negocio con excelencia e innovación
+                  </span>
+                </div>
                 <h1 className="text-5xl sm:text-6xl font-extrabold text-warm-900 dark:text-white leading-tight tracking-tight">
                   Contabilidad que inspira confianza e impulsa el{' '}
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-secondary-500 to-sage-500">
@@ -217,24 +248,6 @@ const Hero = () => {
               </div>
 
               {/* Trust metrics */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-2">
-                <div className="text-center sm:text-left">
-                  <p className="text-3xl font-bold text-warm-900 dark:text-white">6+ años</p>
-                  <p className="text-sm text-warm-600 dark:text-gray-300">de experiencia</p>
-                </div>
-                <div className="text-center sm:text-left">
-                  <p className="text-3xl font-bold text-warm-900 dark:text-white">1200+</p>
-                  <p className="text-sm text-warm-600 dark:text-gray-300">emprendedores</p>
-                </div>
-                <div className="text-center sm:text-left">
-                  <p className="text-3xl font-bold text-warm-900 dark:text-white">99%</p>
-                  <p className="text-sm text-warm-600 dark:text-gray-300">satisfacción</p>
-                </div>
-                <div className="text-center sm:text-left">
-                  <p className="text-3xl font-bold text-warm-900 dark:text-white">≤ 5 min</p>
-                  <p className="text-sm text-warm-600 dark:text-gray-300">tiempo de respuesta</p>
-                </div>
-              </div>
               {/* Google Reviews badge */}
               <div className="pt-2 flex items-center justify-center sm:justify-start" aria-label="Valoración en Google 5.0 de 5">
                 <div className="flex items-center gap-2 bg-primary-100 dark:bg-sage-900/20 px-3 py-1.5 rounded">
@@ -253,6 +266,13 @@ const Hero = () => {
                   key={services[active].key}
                   className={`relative rounded-[22px] p-8 bg-white/70 dark:bg-gray-800/60 backdrop-blur border ${services[active].ring} ring-2 shadow-xl transition-all duration-500`}
                 >
+                  {/* Promo ribbon */}
+                  <div className="absolute -top-3 -left-3 z-10">
+                    <span className="inline-block rotate-[-6deg] bg-gradient-to-r from-primary-600 to-secondary-500 text-white text-xs font-semibold px-3 py-1 rounded-md shadow">
+                      🎁 Asesoría inicial gratis
+                    </span>
+                  </div>
+
                   {/* Background accents */}
                   <div className="pointer-events-none absolute -top-10 -right-10 w-40 h-40 bg-primary-200/40 dark:bg-sage-900/30 rounded-full blur-3xl" />
                   <div className="pointer-events-none absolute -bottom-10 -left-10 w-48 h-48 bg-warm-200/40 dark:bg-primary-800/20 rounded-full blur-3xl" />
@@ -303,6 +323,25 @@ const Hero = () => {
 
               {/* Subtle helper text */}
               <p className="mt-4 text-sm text-warm-600 dark:text-gray-400">Explora nuestros servicios con un clic</p>
+            </div>
+          </div>
+
+          {/* Bottom promo callout */}
+          <div className="mt-12">
+            <div className="rounded-2xl p-[2px] bg-gradient-to-r from-primary-600 via-secondary-500 to-sage-500 shadow-xl">
+              <div className="rounded-2xl bg-white/80 dark:bg-gray-900/70 backdrop-blur px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-warm-900 dark:text-gray-100 text-center sm:text-left font-medium">
+                  🎉 Aprovecha: primera asesoría gratis, sin compromiso. Respuesta en ≤ 5 min.
+                </p>
+                <a
+                  href={waLink('Hola, quiero mi asesoria gratis')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-sage px-6 py-3"
+                >
+                  Canjear ahora
+                </a>
+              </div>
             </div>
           </div>
         </div>
