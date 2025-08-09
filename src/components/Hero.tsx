@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { waLink, PHONE_DISPLAY, PHONE_E164 } from '../config';
 
 const Hero = () => {
-  // Service spotlight data for the interactive preview on the right
+  // Service spotlight data
   const services = [
     {
       key: 'contabilidad',
@@ -11,11 +11,7 @@ const Hero = () => {
       icon: Calculator,
       tag: 'Mensual',
       desc: 'Orden, cumplimiento y control financiero para decidir con claridad.',
-      bullets: [
-        'Estados y reportes claros',
-        'Impuestos y obligaciones al día',
-        'Acompañamiento continuo'
-      ],
+      bullets: ['Estados y reportes claros', 'Impuestos y obligaciones al día', 'Acompañamiento continuo'],
       gradient: 'from-primary-50 to-warm-100 dark:from-sage-900/20 dark:to-gray-800',
       ring: 'ring-primary-200/60 dark:ring-sage-700'
     },
@@ -25,11 +21,7 @@ const Hero = () => {
       icon: TrendingUp,
       tag: 'Estrategia',
       desc: 'Optimiza tu carga tributaria cumpliendo la norma, sin sorpresas.',
-      bullets: [
-        'Planificación y proyección',
-        'Revisiones preventivas',
-        'Soporte ante fiscalizaciones'
-      ],
+      bullets: ['Planificación y proyección', 'Revisiones preventivas', 'Soporte ante fiscalizaciones'],
       gradient: 'from-secondary-50 to-warm-100 dark:from-secondary-900/20 dark:to-gray-800',
       ring: 'ring-secondary-200/60 dark:ring-secondary-700'
     },
@@ -39,11 +31,7 @@ const Hero = () => {
       icon: CheckCircle,
       tag: 'Correcciones',
       desc: 'Normalizamos tus pendientes con SII y Tesorería para retomar el control.',
-      bullets: [
-        'Convenios y rectificaciones',
-        'Levantamiento de observaciones',
-        'Defensa y representación'
-      ],
+      bullets: ['Convenios y rectificaciones', 'Levantamiento de observaciones', 'Defensa y representación'],
       gradient: 'from-warm-100 to-primary-50 dark:from-primary-900/10 dark:to-gray-800',
       ring: 'ring-primary-200/60 dark:ring-sage-700'
     },
@@ -53,20 +41,19 @@ const Hero = () => {
       icon: Building,
       tag: 'Crecimiento',
       desc: 'Proyección de caja, indicadores y metas para escalar con confianza.',
-      bullets: [
-        'Presupuestos y KPIs',
-        'Análisis de rentabilidad',
-        'Tableros ejecutivos'
-      ],
+      bullets: ['Presupuestos y KPIs', 'Análisis de rentabilidad', 'Tableros ejecutivos'],
       gradient: 'from-sage-50 to-warm-100 dark:from-sage-900/20 dark:to-gray-800',
       ring: 'ring-sage-200/60 dark:ring-sage-700'
     }
   ];
 
+  // Restore interactive preview state (auto-rotate)
   const [active, setActive] = useState(0);
   const ActiveIcon = services[active].icon;
-  
-  // Auto-rotation with pause on hover
+  // Ensure uniform bullet layout - always show exactly 4 bullets (2x2 in mobile)
+  const currentBullets = services[active].bullets;
+  // For uniform composition, always render 4 slots with fixed heights
+  const uniformBullets = Array.from({ length: 4 }, (_, i) => currentBullets[i] || '');
   const [paused, setPaused] = useState(false);
   useEffect(() => {
     const id = setInterval(() => {
@@ -141,14 +128,14 @@ const Hero = () => {
                     Impulsa tu negocio con excelencia e innovación
                   </span>
                 </div>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-warm-900 dark:text-white leading-tight tracking-tight drop-shadow-md dark:drop-shadow-none">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-black dark:text-white leading-tight tracking-tight">
                   Contabilidad que inspira confianza e impulsa el{' '}
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-secondary-500 to-sage-500">
                     crecimiento
                   </span>
                   .
                 </h1>
-                <p className="text-lg text-warm-700 dark:text-gray-300 leading-relaxed drop-shadow dark:drop-shadow-none">
+                <p className="text-lg text-black/90 dark:text-gray-200 leading-relaxed">
                   En Axio Consultores combinamos experiencia, tecnología y un servicio humano excepcional
                   para que tomes decisiones con datos claros y estés siempre al día.
                 </p>
@@ -175,8 +162,18 @@ const Hero = () => {
                 </a>
               </div>
 
-              {/* Service selector chips (pause auto-rotation on hover) */}
-              <div className="pt-4" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+              {/* Trust metrics */}
+              {/* Google Reviews badge */}
+              <div className="pt-2 flex items-center justify-center sm:justify-start" aria-label="Valoración en Google 5.0 de 5">
+                <div className="flex items-center gap-2 bg-primary-100 dark:bg-sage-900/20 px-3 py-1.5 rounded">
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content - Chips above auto-changing preview card */}
+            <div className="relative animate-slide-up" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+              {/* Service selector chips */}
+              <div className="mb-4 sm:mb-5">
                 <div className="flex flex-wrap gap-2">
                   {services.map((s, i) => (
                     <button
@@ -197,21 +194,11 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Trust metrics */}
-              {/* Google Reviews badge */}
-              <div className="pt-2 flex items-center justify-center sm:justify-start" aria-label="Valoración en Google 5.0 de 5">
-                <div className="flex items-center gap-2 bg-primary-100 dark:bg-sage-900/20 px-3 py-1.5 rounded">
-                </div>
-              </div>
-            </div>
-
-            {/* Right Content - Interactive Service Preview (pause on hover) */}
-            <div className="relative animate-slide-up" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-              {/* Glow ring */}
+              {/* Auto-rotating preview card */}
               <div className={`transition-all duration-500 rounded-3xl p-[2px] bg-gradient-to-br ${services[active].gradient}`}>
                 <div
                   key={services[active].key}
-                  className={`relative rounded-[22px] p-6 sm:p-8 bg-white/70 dark:bg-gray-800/60 backdrop-blur border ${services[active].ring} ring-2 shadow-xl transition-all duration-500`}
+                  className={`relative rounded-[22px] p-6 sm:p-8 bg-white/70 dark:bg-gray-800/60 backdrop-blur border ${services[active].ring} ring-2 shadow-xl transition-all duration-500 flex flex-col w-full min-h-[440px] md:min-h-[460px] lg:min-h-[480px]`}
                 >
                   {/* Promo ribbon */}
                   <div className="absolute -top-3 -left-3 z-10">
@@ -220,47 +207,79 @@ const Hero = () => {
                     </span>
                   </div>
 
-                  {/* Background accents */}
-                  <div className="pointer-events-none absolute -top-10 -right-10 w-40 h-40 bg-primary-200/40 dark:bg-sage-900/30 rounded-full blur-3xl" />
-                  <div className="pointer-events-none absolute -bottom-10 -left-10 w-48 h-48 bg-warm-200/40 dark:bg-primary-800/20 rounded-full blur-3xl" />
-
-                  {/* Header */}
+                  {/* Header - Fixed heights for uniform composition */}
                   <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-xl bg-warm-100 dark:bg-gray-700 flex items-center justify-center shadow-inner">
+                    <div className="w-14 h-14 rounded-xl bg-warm-100 dark:bg-gray-700 flex items-center justify-center shadow-inner flex-shrink-0">
                       <ActiveIcon className="w-7 h-7 text-primary-600 dark:text-sage-400" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-2xl font-semibold text-warm-900 dark:text-white">{services[active].name}</h3>
-                        <span className="px-2 py-0.5 text-xs rounded-full bg-primary-100 text-primary-700 dark:bg-sage-900/30 dark:text-sage-300 border border-primary-200/60 dark:border-sage-700">{services[active].tag}</span>
+                      <div className="flex items-center gap-3 min-h-[40px]" style={{ minHeight: '40px' }}>
+                        <h3 className="text-2xl font-semibold text-warm-900 dark:text-white leading-tight">{services[active].name}</h3>
+                        <span className="px-2 py-0.5 text-xs rounded-full bg-primary-100 text-primary-700 dark:bg-sage-900/30 dark:text-sage-300 border border-primary-200/60 dark:border-sage-700 flex-shrink-0">{services[active].tag}</span>
                       </div>
-                      <p className="mt-2 text-warm-700 dark:text-gray-300">{services[active].desc}</p>
+                      <div className="mt-2 h-[72px] flex items-start" style={{ height: '72px' }}>
+                        <p className="text-warm-700 dark:text-gray-300 leading-relaxed">{services[active].desc}</p>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Bullets */}
-                  <ul className="mt-6 space-y-3">
-                    {services[active].bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 mt-0.5 text-sage-500" />
-                        <span className="text-warm-800 dark:text-gray-200">{b}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Bullets - Uniform composition for all services with fixed container height */}
+                  <div className="mt-6">
+                    {/* Mobile/Tablet: fixed 2x2 grid - always 4 slots with fixed total height */}
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-3 lg:hidden h-[96px]" style={{ height: '96px' }}>
+                      {uniformBullets.map((bullet, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-start gap-2 h-[40px]" // Fixed height for uniform spacing
+                          style={{ minHeight: '40px' }}
+                        >
+                          {bullet ? (
+                            <>
+                              <CheckCircle className="w-4 h-4 mt-0.5 text-sage-500 flex-shrink-0" />
+                              <span className="text-sm text-warm-800 dark:text-gray-200 leading-tight">
+                                {bullet}
+                              </span>
+                            </>
+                          ) : (
+                            // Invisible placeholder to maintain grid structure
+                            <div className="w-full h-full" aria-hidden="true" />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Desktop: vertical list - uniform height per bullet with fixed container */}
+                    <div className="hidden lg:block space-y-3 h-[140px]" style={{ height: '140px' }}>
+                      {uniformBullets.map((bullet, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-start gap-3 min-h-[32px]" // Fixed minimum height
+                          style={{ minHeight: '32px' }}
+                        >
+                          {bullet ? (
+                            <>
+                              <CheckCircle className="w-5 h-5 mt-0.5 text-sage-500 flex-shrink-0" />
+                              <span className="text-warm-800 dark:text-gray-200 leading-relaxed">
+                                {bullet}
+                              </span>
+                            </>
+                          ) : (
+                            // Invisible placeholder to maintain vertical spacing
+                            <div className="w-full h-full" aria-hidden="true" />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
                   {/* Actions */}
-                  <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                    <a
-                      href="#services"
-                      className="btn-primary px-5 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500"
-                    >
-                      Conocer este servicio
-                    </a>
+                  <div className="mt-auto pt-6 flex flex-col sm:flex-row gap-3">
+                    <a href="#services" className="btn-primary px-5 py-3">Conocer este servicio</a>
                     <a
                       href={waLink(`Hola, tengo dudas sobre el servicio de ${services[active].name}`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-secondary px-5 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-warm-400"
+                      className="btn-secondary px-5 py-3"
                     >
                       Consultar por WhatsApp
                     </a>
