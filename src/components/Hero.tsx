@@ -85,6 +85,9 @@ const Hero = () => {
 
   return (
     <>
+      {/* Spacer to offset fixed navbar height (h-20) */}
+      <div className="h-20" aria-hidden="true" />
+
       {/* Top Banner */}
       <div className="bg-warm-800 dark:bg-gray-700 text-white py-2 text-center">
         <div className="flex items-center justify-center gap-2 text-sm">
@@ -99,10 +102,11 @@ const Hero = () => {
       </div>
 
       {/* Main Hero Section */}
-      <section id="home" className="relative overflow-hidden bg-transparent pt-10 pb-20">
+      <section id="home" className="relative overflow-hidden bg-transparent pt-10 pb-20 scroll-mt-20">
         <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+          {/* Uniform blur on the whole video in both modes */}
           <video
-            className="absolute inset-0 w-full h-full object-cover opacity-100 dark:opacity-90 motion-reduce:opacity-30 brightness-110 contrast-90 saturate-60 dark:brightness-50 dark:contrast-110 dark:saturate-100"
+            className="absolute inset-0 w-full h-full object-cover opacity-100 motion-reduce:opacity-30 blur-sm md:blur saturate-75 contrast-95 dark:brightness-50 dark:contrast-110 dark:saturate-100"
             autoPlay
             muted
             loop
@@ -112,11 +116,11 @@ const Hero = () => {
             <source src="/media/video1.mp4" type="video/mp4" />
           </video>
 
-          {/* Minimal global tint (stronger in light) */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10 dark:from-black/30 dark:via-black/10 dark:to-black/30" />
+          {/* Single full-width overlay per mode (no half/sided scrims) */}
+          <div className="absolute inset-0 bg-white/20 dark:bg-black/35" />
 
-          {/* Left scrim stronger and wider in light, with blur; unchanged in dark */}
-          <div className="absolute inset-y-0 left-0 right-0 md:right-[40%] bg-gradient-to-r from-white/90 via-white/60 to-transparent supports-[backdrop-filter]:backdrop-blur-md dark:from-black/60 dark:via-black/30 dark:to-transparent" />
+          {/* Full-width lateral gradient to enhance text area (light and dark) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/25 to-white/10 dark:from-black/60 dark:via-black/30 dark:to-black/20" />
 
           {/* Keep invisible blobs to preserve parallax state usage (no visual impact) */}
           <div className="absolute -top-24 -right-20 w-96 h-96 opacity-0" style={{ transform: `translateY(${parallax * 0.05}px)` }} />
@@ -197,9 +201,6 @@ const Hero = () => {
               {/* Google Reviews badge */}
               <div className="pt-2 flex items-center justify-center sm:justify-start" aria-label="Valoración en Google 5.0 de 5">
                 <div className="flex items-center gap-2 bg-primary-100 dark:bg-sage-900/20 px-3 py-1.5 rounded">
-                  <span className="text-primary-600 dark:text-sage-400 font-bold text-xs">G</span>
-                  <span className="text-xs text-warm-700 dark:text-gray-300">Google Reviews</span>
-                  <span className="text-xs text-warm-700 dark:text-gray-300">5.0 ★★★★★</span>
                 </div>
               </div>
             </div>
@@ -266,9 +267,6 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Subtle helper text */}
-              <p className="mt-4 text-sm text-warm-600 dark:text-gray-400">Explora nuestros servicios con un clic</p>
             </div>
           </div>
 

@@ -19,9 +19,9 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Inicio', href: '#home' },
-    { name: 'Contabilidad', href: '#services' },
-    { name: 'Remuneraciones', href: '#services' },
-    { name: 'Creación de empresas', href: '#services' },
+    { name: 'Servicios', href: '#services' },
+    { name: 'Testimonios', href: '#testimonials' },
+    { name: 'Contacto', href: '#contact' },
   ];
 
   return (
@@ -31,18 +31,18 @@ const Navbar = () => {
         : 'bg-warm-50 dark:bg-gray-900 shadow-sm'
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-primary-500 dark:from-sage-500 dark:to-sage-400 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">AXIO</span>
+            <a href="#home" className="flex items-center gap-3 group" aria-label="Ir al inicio">
+              <img
+                src="/media/logo.png"
+                alt="Axio Consultores"
+                className="h-12 w-auto object-contain select-none pointer-events-none transition-all duration-300 dark:invert"
+              />
+              <div className="leading-tight">
               </div>
-              <div>
-                <span className="text-xl font-bold text-warm-900 dark:text-white">Axio Consultores</span>
-                <div className="text-xs text-warm-500 dark:text-gray-400">Soluciones Contables</div>
-              </div>
-            </div>
+            </a>
           </div>
 
           {/* Desktop Navigation */}
