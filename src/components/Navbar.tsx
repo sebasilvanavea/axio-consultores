@@ -36,10 +36,10 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-primary-500 dark:from-sage-500 dark:to-sage-400 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">MBS</span>
+                <span className="text-white font-bold text-lg">AXIO</span>
               </div>
               <div>
-                <span className="text-xl font-bold text-warm-900 dark:text-white">MBS Consultores</span>
+                <span className="text-xl font-bold text-warm-900 dark:text-white">Axio Consultores</span>
                 <div className="text-xs text-warm-500 dark:text-gray-400">Soluciones Contables</div>
               </div>
             </div>

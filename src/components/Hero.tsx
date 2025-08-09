@@ -129,7 +129,7 @@ const Hero = () => {
                   .
                 </h1>
                 <p className="text-lg text-warm-700 dark:text-gray-300 leading-relaxed">
-                  En MBS Consultores combinamos experiencia, tecnología y un servicio humano excepcional
+                  En Axio Consultores combinamos experiencia, tecnología y un servicio humano excepcional
                   para que tomes decisiones con datos claros y estés siempre al día.
                 </p>
               </div>

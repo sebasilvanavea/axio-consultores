@@ -253,7 +253,7 @@ const Services = () => {
         {/* Statistics Section */}
         <div className="mt-20 text-center">
           <h3 className="text-2xl font-bold text-warm-900 dark:text-white mb-8">
-            Más de 1.200 emprendedores confían en la contabilidad de MBS Consultores
+            Más de 1.200 emprendedores confían en la contabilidad de Axio Consultores
           </h3>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">

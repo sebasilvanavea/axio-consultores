@@ -7,7 +7,7 @@ const htmlTemplate = (data: Record<string, any>) => `
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;margin:0 auto;background:#ffffff;border-radius:12px;border:1px solid #e6e0d8;overflow:hidden">
       <tr>
         <td style="padding:20px 24px;background:#b08968;color:#fff;font-weight:700;font-size:18px">
-          MBS Consultores — Nueva consulta de contacto
+          Axio Consultores — Nueva consulta de contacto
         </td>
       </tr>
       <tr>
@@ -56,7 +56,7 @@ export const handler: Handler = async (event) => {
     // Send using Resend
     const apiKey = process.env.RESEND_API_KEY as string | undefined;
     const to = (process.env.CONTACT_TO_EMAIL as string | undefined) || 'silvanavea@gmail.com';
-    const from = (process.env.MAIL_FROM as string | undefined) || 'MBS Consultores <onboarding@resend.dev>';
+    const from = (process.env.MAIL_FROM as string | undefined) || 'Axio Consultores <onboarding@resend.dev>';
 
     if (!apiKey) {
       console.warn('RESEND_API_KEY missing. Skip sending.');

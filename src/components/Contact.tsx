@@ -80,8 +80,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      content: 'contacto@mbs-consultores.cl',
-      link: 'mailto:contacto@mbs-consultores.cl'
+      content: 'contacto@axio-consultores.cl',
+      link: 'mailto:contacto@axio-consultores.cl'
     },
     {
       icon: Phone,

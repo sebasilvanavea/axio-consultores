@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
           <div className="space-y-6">
             <div>
               <h3 className="text-2xl font-bold text-white mb-4">
-                MBS Consultores
+                Axio Consultores
               </h3>
               <p className="text-gray-400 leading-relaxed">
                 Más de 15 años brindando soluciones contables y financieras que inspiran confianza y generan resultados.
@@ -45,21 +45,21 @@ const Footer: React.FC = () => {
             
             <div className="flex space-x-4">
               <a
-                href="https://linkedin.com/company/mbs-consultores"
+                href="https://linkedin.com/company/axio-consultores"
                 className="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-all duration-300 group transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-400"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
               </a>
               <a
-                href="https://instagram.com/mbs.consultores"
+                href="https://instagram.com/axio.consultores"
                 className="w-10 h-10 bg-gray-800 hover:bg-gradient-to-br hover:from-sage-600 hover:to-primary-600 rounded-lg flex items-center justify-center transition-all duration-300 group transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-400"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
               </a>
               <a
-                href="mailto:contacto@mbs-consultores.cl"
+                href="mailto:contacto@axio-consultores.cl"
                 className="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-all duration-300 group transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-400"
                 aria-label="Email"
               >
@@ -112,10 +112,10 @@ const Footer: React.FC = () => {
               <div>
                 <p className="text-gray-400 text-sm mb-1">Email</p>
                 <a
-                  href="mailto:contacto@mbs-consultores.cl"
+                  href="mailto:contacto@axio-consultores.cl"
                   className="text-white hover:text-primary-400 transition-colors duration-300"
                 >
-                  contacto@mbs-consultores.cl
+                  contacto@axio-consultores.cl
                 </a>
               </div>
               <div>
@@ -166,7 +166,7 @@ const Footer: React.FC = () => {
 
             <div className="flex items-center space-x-4">
               <p className="text-gray-400 text-sm">
-                © 2024 MBS Consultores. Todos los derechos reservados.
+                © 2024 Axio Consultores. Todos los derechos reservados.
               </p>
               
               <button
