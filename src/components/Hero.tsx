@@ -99,9 +99,33 @@ const Hero = () => {
       </div>
 
       {/* Main Hero Section */}
-      <section id="home" className="relative overflow-hidden bg-warm-50 dark:bg-gray-900 pt-10 pb-20">
-        {/* Decorative immersive background with parallax */}
-        <div className="pointer-events-none absolute inset-0 -z-10">
+      <section
+        id="home"
+        className="relative overflow-hidden bg-gradient-to-b from-warm-50 via-warm-100 to-white dark:from-gray-900 dark:via-gray-900/90 dark:to-gray-950 pt-10 pb-20"
+      >
+        {/* Decorative immersive background with parallax and gradient mesh */}
+        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+          {/* Soft gradient mesh (multiple radial gradients) */}
+          <div
+            className="absolute inset-0 opacity-80 dark:opacity-50"
+            style={{
+              backgroundImage:
+                'radial-gradient(60rem 30rem at 20% -10%, rgba(240, 225, 210, .65), transparent 60%),\
+                 radial-gradient(50rem 26rem at 120% 10%, rgba(186, 230, 253, .40), transparent 60%),\
+                 radial-gradient(40rem 22rem at -10% 80%, rgba(209, 250, 229, .38), transparent 60%)',
+            }}
+          />
+
+          {/* Conic sweep glow */}
+          <div
+            className="absolute -top-40 right-1/2 translate-x-1/2 w-[80rem] h-[80rem] opacity-30 blur-3xl dark:opacity-20"
+            style={{
+              background:
+                'conic-gradient(from 0deg at 50% 50%, rgba(8,145,178,.35), rgba(99,102,241,.25), rgba(16,185,129,.35), rgba(8,145,178,.35))',
+            }}
+          />
+
+          {/* Existing parallax blobs */}
           <div
             className="absolute -top-24 -right-20 w-96 h-96 bg-primary-200/40 dark:bg-sage-900/20 rounded-full blur-3xl"
             style={{ transform: `translateY(${parallax * 0.05}px)` }}
@@ -110,7 +134,22 @@ const Hero = () => {
             className="absolute -bottom-32 -left-24 w-[28rem] h-[28rem] bg-warm-200/40 dark:bg-primary-800/20 rounded-full blur-3xl"
             style={{ transform: `translateY(${parallax * -0.03}px)` }}
           />
-          <div className="absolute inset-0 opacity-[0.07] dark:opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '22px 22px', color: 'rgba(17,24,39,0.8)' }} />
+
+          {/* Subtle dotted texture */}
+          <div
+            className="absolute inset-0 opacity-[0.06] dark:opacity-10"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
+              backgroundSize: '22px 22px',
+              color: 'rgba(17,24,39,0.8)',
+            }}
+          />
+
+          {/* Angled highlight stripe */}
+          <div
+            className="absolute -right-48 top-0 h-[140%] w-[28rem] rotate-12 bg-gradient-to-b from-primary-200/40 via-transparent to-secondary-200/40 dark:from-sage-900/20 dark:via-transparent dark:to-primary-900/20 blur-2xl"
+          />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
