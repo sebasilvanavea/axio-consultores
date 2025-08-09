@@ -101,13 +101,12 @@ const Hero = () => {
       {/* Main Hero Section */}
       <section
         id="home"
-        className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-warm-100 to-sage-50 dark:from-gray-900 dark:via-primary-950/30 dark:to-black pt-10 pb-20"
+        className="relative overflow-hidden bg-transparent pt-10 pb-20"
       >
-        {/* Decorative immersive background with video + overlays */}
-        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-          {/* Background video (place your file in public/media/hero-bg.mp4) */}
+        {/* Background video only (overlays disabled for visibility validation) */}
+        <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
           <video
-            className="absolute inset-0 w-full h-full object-cover opacity-80 dark:opacity-65 motion-reduce:opacity-30"
+            className="absolute inset-0 w-full h-full object-cover opacity-100 dark:opacity-90 motion-reduce:opacity-30"
             autoPlay
             muted
             loop
@@ -117,67 +116,24 @@ const Hero = () => {
             <source src="/media/video1.mp4" type="video/mp4" />
           </video>
 
-          {/* Softer tint overlay for better visibility */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-white/5 to-transparent dark:from-black/35 dark:via-black/20 dark:to-transparent" />
+          {/* Minimal tint just for text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/10 dark:from-black/30 dark:via-transparent dark:to-black/30" />
 
-          {/* Lighter gradient mesh */}
-          <div
-            className="absolute inset-0 opacity-20 dark:opacity-15"
-            style={{
-              backgroundImage:
-                'radial-gradient(70rem 36rem at 20% -10%, rgba(250, 204, 21, .14), transparent 60%),' +
-                'radial-gradient(60rem 30rem at 115% 5%, rgba(8, 145, 178, .14), transparent 60%),' +
-                'radial-gradient(50rem 26rem at -10% 85%, rgba(16, 185, 129, .12), transparent 60%),' +
-                'radial-gradient(40rem 22rem at 80% 100%, rgba(186, 230, 253, .10), transparent 60%)',
-            }}
-          />
+          {/* Disabled decorative overlays to ensure the video is clearly visible */}
+          {/*
+          <div className="absolute inset-0 opacity-20 dark:opacity-15" style={{ backgroundImage: '...' }} />
+          <div className="absolute -top-40 right-1/2 translate-x-1/2 w-[80rem] h-[80rem] opacity-20 blur-3xl dark:opacity-15" style={{ background: '...' }} />
+          <div className="absolute inset-0 opacity-[0.025] dark:opacity-[0.03]" style={{ backgroundImage: '...', backgroundSize: '22px 22px' }} />
+          <div className="absolute inset-0 opacity-[0.02] mix-blend-multiply dark:opacity-[0.03]" style={{ backgroundImage: '...', backgroundSize: 'auto' }} />
+          <div className="absolute -right-48 top-0 h-[140%] w-[28rem] rotate-12 bg-gradient-to-b from-primary-200/40 via-transparent to-secondary-200/40 dark:from-sage-900/20 dark:via-transparent dark:to-primary-900/20 blur-2xl" />
+          */}
 
-          {/* Conic sweep glow */}
-          <div
-            className="absolute -top-40 right-1/2 translate-x-1/2 w-[80rem] h-[80rem] opacity-20 blur-3xl dark:opacity-15"
-            style={{
-              background:
-                'conic-gradient(from 0deg at 50% 50%, rgba(8,145,178,.25), rgba(99,102,241,.18), rgba(16,185,129,.25), rgba(8,145,178,.25))',
-            }}
-          />
-
-          {/* Subtle dotted texture */}
-          <div
-            className="absolute inset-0 opacity-[0.025] dark:opacity-[0.03]"
-            style={{
-              backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
-              backgroundSize: '22px 22px',
-              color: 'rgba(17,24,39,0.8)',
-            }}
-          />
-
-          {/* Noise overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.02] mix-blend-multiply dark:opacity-[0.03]"
-            style={{
-              backgroundImage:
-                "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\"><filter id=\"n\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.8\" numOctaves=\"2\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23n)\" opacity=\"0.35\"/></svg>')",
-              backgroundSize: 'auto',
-            }}
-          />
-
-          {/* Angled highlight stripe */}
-          <div
-            className="absolute -right-48 top-0 h-[140%] w-[28rem] rotate-12 bg-gradient-to-b from-primary-200/40 via-transparent to-secondary-200/40 dark:from-sage-900/20 dark:via-transparent dark:to-primary-900/20 blur-2xl"
-          />
-
-          {/* Existing parallax blobs */}
-          <div
-            className="absolute -top-24 -right-20 w-96 h-96 bg-primary-200/40 dark:bg-sage-900/20 rounded-full blur-3xl"
-            style={{ transform: `translateY(${parallax * 0.05}px)` }}
-          />
-          <div
-            className="absolute -bottom-32 -left-24 w-[28rem] h-[28rem] bg-warm-200/40 dark:bg-primary-800/20 rounded-full blur-3xl"
-            style={{ transform: `translateY(${parallax * -0.03}px)` }}
-          />
+          {/* Keep invisible blobs to preserve parallax state usage (no visual impact) */}
+          <div className="absolute -top-24 -right-20 w-96 h-96 opacity-0" style={{ transform: `translateY(${parallax * 0.05}px)` }} />
+          <div className="absolute -bottom-32 -left-24 w-[28rem] h-[28rem] opacity-0" style={{ transform: `translateY(${parallax * -0.03}px)` }} />
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-8 animate-slide-up">
