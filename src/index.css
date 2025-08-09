@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scroll and selection */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: theme('colors.primary.200');
+  color: theme('colors.warm.900');
+}
+
+/***** Base typography *****/
+@layer base {
+  body {
+    @apply text-warm-800 dark:text-gray-100 bg-warm-50 dark:bg-gray-900 antialiased; 
+  }
+  h1, h2, h3, h4 {
+    @apply tracking-tight; 
+  }
+}
+
+/***** Reusable component classes *****/
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-primary-600 hover:bg-primary-700 dark:bg-sage-500 dark:hover:bg-sage-600 shadow-md hover:shadow-lg transition-all duration-300 ease-soft transform hover:-translate-y-0.5 hover:scale-[1.02];
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-warm-900 bg-warm-100 hover:bg-warm-200 dark:text-white dark:bg-gray-700 dark:hover:bg-gray-600 shadow-md hover:shadow-lg transition-all duration-300 ease-soft transform hover:-translate-y-0.5 hover:scale-[1.02];
+  }
+  .btn-sage {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-sage-500 hover:bg-sage-600 shadow-md hover:shadow-lg transition-all duration-300 ease-soft transform hover:-translate-y-0.5 hover:scale-[1.02];
+  }
+  .card {
+    @apply bg-warm-50 dark:bg-gray-800 rounded-2xl border border-warm-200 dark:border-gray-700 shadow-lg hover:shadow-elevated transition-all duration-500 ease-soft;
+  }
+  .chip {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-semibold bg-primary-600 text-white dark:bg-sage-500;
+  }
+}
+
+/***** Utility helpers *****/
+@layer utilities {
+  .fade-in {
+    @apply animate-fade-in;
+  }
+  .slide-up {
+    @apply animate-slide-up;
+  }
+  .glass {
+    @apply bg-white/70 dark:bg-gray-900/70 backdrop-blur-xs border border-warm-200/50 dark:border-gray-700/50;
+  }
+}

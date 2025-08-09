@@ -1,0 +1,12 @@
+{
+  "name": "MBS Consultores",
+  "short_name": "MBS",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1020",
+  "theme_color": "#0E7490",
+  "description": "Soluciones contables que inspiran confianza.",
+  "icons": [
+    { "src": "/vite.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
