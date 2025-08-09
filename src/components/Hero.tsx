@@ -99,14 +99,11 @@ const Hero = () => {
       </div>
 
       {/* Main Hero Section */}
-      <section
-        id="home"
-        className="relative overflow-hidden bg-transparent pt-10 pb-20"
-      >
+      <section id="home" className="relative overflow-hidden bg-transparent pt-10 pb-20">
         {/* Background video only (overlays disabled for visibility validation) */}
         <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
           <video
-            className="absolute inset-0 w-full h-full object-cover opacity-100 dark:opacity-90 motion-reduce:opacity-30"
+            className="absolute inset-0 w-full h-full object-cover opacity-100 dark:opacity-90 motion-reduce:opacity-30 brightness-105 contrast-95 saturate-75 dark:brightness-50 dark:contrast-110 dark:saturate-100"
             autoPlay
             muted
             loop
@@ -116,17 +113,11 @@ const Hero = () => {
             <source src="/media/video1.mp4" type="video/mp4" />
           </video>
 
-          {/* Minimal tint just for text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/10 dark:from-black/30 dark:via-transparent dark:to-black/30" />
+          {/* Minimal global tint */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/10 dark:from-black/30 dark:via-black/10 dark:to-black/30" />
 
-          {/* Disabled decorative overlays to ensure the video is clearly visible */}
-          {/*
-          <div className="absolute inset-0 opacity-20 dark:opacity-15" style={{ backgroundImage: '...' }} />
-          <div className="absolute -top-40 right-1/2 translate-x-1/2 w-[80rem] h-[80rem] opacity-20 blur-3xl dark:opacity-15" style={{ background: '...' }} />
-          <div className="absolute inset-0 opacity-[0.025] dark:opacity-[0.03]" style={{ backgroundImage: '...', backgroundSize: '22px 22px' }} />
-          <div className="absolute inset-0 opacity-[0.02] mix-blend-multiply dark:opacity-[0.03]" style={{ backgroundImage: '...', backgroundSize: 'auto' }} />
-          <div className="absolute -right-48 top-0 h-[140%] w-[28rem] rotate-12 bg-gradient-to-b from-primary-200/40 via-transparent to-secondary-200/40 dark:from-sage-900/20 dark:via-transparent dark:to-primary-900/20 blur-2xl" />
-          */}
+          {/* Left scrim (stronger in light mode, with backdrop blur) */}
+          <div className="absolute inset-y-0 left-0 right-0 md:right-[55%] bg-gradient-to-r from-white/80 via-white/40 to-transparent backdrop-blur-sm md:backdrop-blur dark:from-black/60 dark:via-black/30 dark:to-transparent" />
 
           {/* Keep invisible blobs to preserve parallax state usage (no visual impact) */}
           <div className="absolute -top-24 -right-20 w-96 h-96 opacity-0" style={{ transform: `translateY(${parallax * 0.05}px)` }} />
