@@ -100,10 +100,9 @@ const Hero = () => {
 
       {/* Main Hero Section */}
       <section id="home" className="relative overflow-hidden bg-transparent pt-10 pb-20">
-        {/* Background video only (overlays disabled for visibility validation) */}
         <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
           <video
-            className="absolute inset-0 w-full h-full object-cover opacity-100 dark:opacity-90 motion-reduce:opacity-30 brightness-105 contrast-95 saturate-75 dark:brightness-50 dark:contrast-110 dark:saturate-100"
+            className="absolute inset-0 w-full h-full object-cover opacity-100 dark:opacity-90 motion-reduce:opacity-30 brightness-110 contrast-90 saturate-60 dark:brightness-50 dark:contrast-110 dark:saturate-100"
             autoPlay
             muted
             loop
@@ -113,11 +112,11 @@ const Hero = () => {
             <source src="/media/video1.mp4" type="video/mp4" />
           </video>
 
-          {/* Minimal global tint */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/10 dark:from-black/30 dark:via-black/10 dark:to-black/30" />
+          {/* Minimal global tint (stronger in light) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10 dark:from-black/30 dark:via-black/10 dark:to-black/30" />
 
-          {/* Left scrim (stronger in light mode, with backdrop blur) */}
-          <div className="absolute inset-y-0 left-0 right-0 md:right-[55%] bg-gradient-to-r from-white/80 via-white/40 to-transparent backdrop-blur-sm md:backdrop-blur dark:from-black/60 dark:via-black/30 dark:to-transparent" />
+          {/* Left scrim stronger and wider in light, with blur; unchanged in dark */}
+          <div className="absolute inset-y-0 left-0 right-0 md:right-[40%] bg-gradient-to-r from-white/90 via-white/60 to-transparent supports-[backdrop-filter]:backdrop-blur-md dark:from-black/60 dark:via-black/30 dark:to-transparent" />
 
           {/* Keep invisible blobs to preserve parallax state usage (no visual impact) */}
           <div className="absolute -top-24 -right-20 w-96 h-96 opacity-0" style={{ transform: `translateY(${parallax * 0.05}px)` }} />
@@ -138,14 +137,14 @@ const Hero = () => {
                     Impulsa tu negocio con excelencia e innovación
                   </span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl font-extrabold text-warm-900 dark:text-white leading-tight tracking-tight">
+                <h1 className="text-5xl sm:text-6xl font-extrabold text-warm-900 dark:text-white leading-tight tracking-tight drop-shadow-md dark:drop-shadow-none">
                   Contabilidad que inspira confianza e impulsa el{' '}
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-secondary-500 to-sage-500">
                     crecimiento
                   </span>
                   .
                 </h1>
-                <p className="text-lg text-warm-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-lg text-warm-700 dark:text-gray-300 leading-relaxed drop-shadow dark:drop-shadow-none">
                   En Axio Consultores combinamos experiencia, tecnología y un servicio humano excepcional
                   para que tomes decisiones con datos claros y estés siempre al día.
                 </p>
