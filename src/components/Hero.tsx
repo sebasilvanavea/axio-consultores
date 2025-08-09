@@ -102,7 +102,7 @@ const Hero = () => {
       </div>
 
       {/* Main Hero Section */}
-      <section id="home" className="relative overflow-hidden bg-transparent pt-10 pb-20 scroll-mt-20">
+      <section id="home" className="relative overflow-hidden bg-transparent pt-8 md:pt-10 pb-16 md:pb-20 scroll-mt-20">
         <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
           {/* Uniform blur on the whole video in both modes */}
           <video
@@ -141,7 +141,7 @@ const Hero = () => {
                     Impulsa tu negocio con excelencia e innovación
                   </span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl font-extrabold text-warm-900 dark:text-white leading-tight tracking-tight drop-shadow-md dark:drop-shadow-none">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-warm-900 dark:text-white leading-tight tracking-tight drop-shadow-md dark:drop-shadow-none">
                   Contabilidad que inspira confianza e impulsa el{' '}
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-secondary-500 to-sage-500">
                     crecimiento
@@ -211,7 +211,7 @@ const Hero = () => {
               <div className={`transition-all duration-500 rounded-3xl p-[2px] bg-gradient-to-br ${services[active].gradient}`}>
                 <div
                   key={services[active].key}
-                  className={`relative rounded-[22px] p-8 bg-white/70 dark:bg-gray-800/60 backdrop-blur border ${services[active].ring} ring-2 shadow-xl transition-all duration-500`}
+                  className={`relative rounded-[22px] p-6 sm:p-8 bg-white/70 dark:bg-gray-800/60 backdrop-blur border ${services[active].ring} ring-2 shadow-xl transition-all duration-500`}
                 >
                   {/* Promo ribbon */}
                   <div className="absolute -top-3 -left-3 z-10">

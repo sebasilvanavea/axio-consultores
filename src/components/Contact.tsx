@@ -107,7 +107,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="relative py-20 bg-warm-100 dark:bg-gray-900">
+    <section id="contact" className="relative py-16 md:py-20 bg-warm-100 dark:bg-gray-900 scroll-mt-20">
       {/* Decorative background */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-20 w-72 h-72 bg-primary-200/40 dark:bg-sage-900/20 rounded-full blur-3xl"></div>
@@ -115,16 +115,16 @@ const Contact = () => {
       </div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-warm-900 dark:text-white">
+        <div className="text-center space-y-4 mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-warm-900 dark:text-white">
             Hablemos de tu proyecto
           </h2>
-          <p className="text-xl text-warm-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-warm-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Estamos aquí para ayudarte. Contáctanos y descubre cómo podemos impulsar el crecimiento de tu empresa
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-12">
           {/* Contact Information */}
           <div className="space-y-8 lg:sticky lg:top-24 self-start animate-slide-up">
             <div>
@@ -199,7 +199,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="card p-8 transition-all duration-300 hover:shadow-xl">
+          <div className="card p-6 md:p-8 transition-all duration-300 hover:shadow-xl">
             {isSubmitted ? (
               <div className="text-center py-12 space-y-4" role="status" aria-live="polite">
                 <CheckCircle className="w-16 h-16 text-sage-500 mx-auto animate-bounce" />

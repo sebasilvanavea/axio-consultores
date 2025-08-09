@@ -101,24 +101,24 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-16 bg-warm-50 dark:bg-gray-900">
+    <section id="services" className="py-14 md:py-16 bg-warm-50 dark:bg-gray-900 scroll-mt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <div className="inline-block bg-primary-600 dark:bg-sage-500 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
             Cuidamos tu negocio
           </div>
-          <h2 className="text-4xl font-bold text-warm-900 dark:text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-warm-900 dark:text-white mb-4 md:mb-6">
             Nuestros servicios
           </h2>
         </div>
 
         {/* Services Grid */}
-        <div className="space-y-16">
+        <div className="space-y-12 md:space-y-16">
           {mainServices.map((service, index) => (
             <div
               key={index}
-              className={`relative p-8 rounded-3xl transition-all duration-500 hover:shadow-2xl transform hover:scale-[1.02] ${
+              className={`relative p-6 sm:p-8 rounded-3xl transition-all duration-500 hover:shadow-2xl transform hover:scale-[1.02] ${
                 index % 4 === 0
                   ? 'bg-gradient-to-r from-warm-100 to-primary-50 dark:from-primary-900/10 dark:to-warm-900/10'
                   : index % 4 === 1
@@ -134,7 +134,7 @@ const Services = () => {
                 }`}
               >
                 {/* Service Image/Icon Side */}
-                <div className="flex-1 relative">
+                <div className="flex-1 relative w-full">
                   <div className="relative transform transition-transform duration-300 hover:scale-105">
                     <img
                       src={service.image}
@@ -142,21 +142,21 @@ const Services = () => {
                       width={960}
                       height={640}
                       loading="lazy"
-                      className="w-full h-80 object-cover rounded-2xl shadow-lg"
+                      className="w-full h-56 sm:h-72 md:h-80 object-cover rounded-2xl shadow-lg"
                     />
                     {service.popular && (
-                      <div className="absolute top-4 right-4 bg-primary-600 dark:bg-sage-500 text-white px-3 py-1 rounded-full text-sm font-semibold animate-pulse">
+                      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-primary-600 dark:bg-sage-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-semibold animate-pulse">
                         Más Popular
                       </div>
                     )}
                     
                     {/* Floating Info Cards */}
-                    <div className="absolute -bottom-6 left-6 card p-4 transform transition-all duration-300 hover:scale-110">
+                    <div className="absolute -bottom-6 left-4 sm:left-6 card p-3 sm:p-4 transform transition-all duration-300 hover:scale-110">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-8 h-8 bg-primary-100 dark:bg-sage-900/30 rounded flex items-center justify-center">
                           <service.icon className="w-4 h-4 text-primary-600 dark:text-sage-400" />
                         </div>
-                        <span className="font-semibold text-warm-800 dark:text-gray-200 text-sm">
+                        <span className="font-semibold text-warm-800 dark:text-gray-200 text-xs sm:text-sm">
                           {index === 0 ? 'Declaración de IVA al Día' : 
                            index === 1 ? 'Remuneraciones al día' :
                            index === 2 ? 'Negocio bajo control' : 'Formaliza tu negocio'}
@@ -166,7 +166,7 @@ const Services = () => {
                         {service.features.slice(0, 3).map((feature, i) => (
                           <div key={i} className="flex items-center gap-2">
                             <CheckCircle className="w-3 h-3 text-sage-500" />
-                            <span className="text-xs text-warm-600 dark:text-gray-400">{feature.split(',')[0]}</span>
+                            <span className="text-[11px] sm:text-xs text-warm-600 dark:text-gray-400">{feature.split(',')[0]}</span>
                           </div>
                         ))}
                       </div>
@@ -175,21 +175,21 @@ const Services = () => {
                 </div>
 
                 {/* Service Content Side */}
-                <div className="flex-1 space-y-6">
+                <div className="flex-1 space-y-5 sm:space-y-6 w-full">
                   <div>
-                    <h3 className="text-3xl font-bold text-warm-900 dark:text-white mb-4 underline transition-colors duration-300">
+                    <h3 className="text-2xl md:text-3xl font-bold text-warm-900 dark:text-white mb-4 underline transition-colors duration-300">
                       {service.title}
                     </h3>
                     
-                    <div className="inline-block bg-primary-600 dark:bg-sage-500 h-1 w-16 mb-4 transition-all duration-300 hover:w-24"></div>
+                    <div className="inline-block bg-primary-600 dark:bg-sage-500 h-1 w-14 md:w-16 mb-4 transition-all duration-300 hover:w-24"></div>
                     
-                    <p className="text-warm-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
+                    <p className="text-warm-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
                       {service.description}
                     </p>
 
                     <div className="flex items-baseline gap-2 mb-4">
                       <span className="text-sm text-warm-600 dark:text-gray-400">{service.frequency}</span>
-                      <span className="text-3xl font-bold text-warm-900 dark:text-white">{service.price}</span>
+                      <span className="text-2xl md:text-3xl font-bold text-warm-900 dark:text-white">{service.price}</span>
                     </div>
                     <p className="text-warm-600 dark:text-gray-400 mb-6">{service.priceDetail}</p>
 
@@ -197,7 +197,7 @@ const Services = () => {
                       <h4 className="font-semibold text-warm-900 dark:text-white mb-3">
                         Servicio incluye:
                       </h4>
-                      <p className="text-warm-700 dark:text-gray-300 mb-4">
+                      <p className="text-warm-700 dark:text-gray-300 mb-4 text-sm md:text-base">
                         {service.features.slice(0, 2).join(', ')}.
                       </p>
                     </div>
@@ -213,13 +213,13 @@ const Services = () => {
                             className="flex items-start gap-2 transform transition-transform duration-300 hover:translate-x-2"
                           >
                             <div className="w-2 h-2 bg-primary-600 dark:bg-sage-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-warm-700 dark:text-gray-300">{point}</span>
+                            <span className="text-warm-700 dark:text-gray-300 text-sm md:text-base">{point}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <p className="text-warm-700 dark:text-gray-300 mb-6">
+                    <p className="text-warm-700 dark:text-gray-300 mb-6 text-sm md:text-base">
                       Asesórate en tiempo real con uno de nuestros profesionales.
                     </p>
 
@@ -251,27 +251,27 @@ const Services = () => {
         </div>
 
         {/* Statistics Section */}
-        <div className="mt-20 text-center">
-          <h3 className="text-2xl font-bold text-warm-900 dark:text-white mb-8">
+        <div className="mt-16 md:mt-20 text-center">
+          <h3 className="text-xl md:text-2xl font-bold text-warm-900 dark:text-white mb-8">
             Más de 1.200 emprendedores confían en la contabilidad de Axio Consultores
           </h3>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-warm-900 dark:text-white">+1500</div>
-              <div className="text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide">EMPRESAS CREADAS</div>
+              <div className="text-2xl md:text-3xl font-bold text-warm-900 dark:text-white">+1500</div>
+              <div className="text-[11px] md:text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide">EMPRESAS CREADAS</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-warm-900 dark:text-white">+2000</div>
-              <div className="text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide">CLIENTES SATISFECHOS</div>
+              <div className="text-2xl md:text-3xl font-bold text-warm-900 dark:text-white">+2000</div>
+              <div className="text-[11px] md:text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide">CLIENTES SATISFECHOS</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-warm-900 dark:text-white">+850</div>
-              <div className="text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide">OFICINAS VIRTUALES</div>
+              <div className="text-2xl md:text-3xl font-bold text-warm-900 dark:text-white">+850</div>
+              <div className="text-[11px] md:text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide">OFICINAS VIRTUALES</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-warm-900 dark:text-white">+1600</div>
-              <div className="text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide">TAZAS DE CAFÉ</div>
+              <div className="text-2xl md:text-3xl font-bold text-warm-900 dark:text-white">+1600</div>
+              <div className="text-[11px] md:text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide">TAZAS DE CAFÉ</div>
             </div>
           </div>
         </div>
