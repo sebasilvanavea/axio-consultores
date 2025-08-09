@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, MessageCircle, ArrowRight } from 'lucide-react';
-import { waLink } from '../config';
+import { waLink, PHONE_E164, PHONE_DISPLAY } from '../config';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -86,8 +86,8 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Teléfono',
-      content: '+56 2 2345 6789',
-      link: 'tel:+56223456789'
+      content: PHONE_DISPLAY,
+      link: `tel:${PHONE_E164}`
     },
     {
       icon: MapPin,

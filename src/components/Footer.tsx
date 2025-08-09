@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Linkedin, Instagram, ArrowUp } from 'lucide-react';
-import { waLink } from '../config';
+import { waLink, PHONE_E164, PHONE_DISPLAY } from '../config';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -121,10 +121,10 @@ const Footer: React.FC = () => {
               <div>
                 <p className="text-gray-400 text-sm mb-1">Teléfono</p>
                 <a
-                  href="tel:+56965004506"
+                  href={`tel:${PHONE_E164}`}
                   className="text-white hover:text-primary-400 transition-colors duration-300"
                 >
-                  +56 9 6500 4506
+                  {PHONE_DISPLAY}
                 </a>
               </div>
               <div>
