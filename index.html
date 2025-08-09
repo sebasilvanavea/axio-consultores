@@ -133,10 +133,15 @@
       <input type="email" name="email" />
       <input type="text" name="subject" />
       <textarea name="message"></textarea>
+      <!-- Add recaptcha placeholder so Netlify injects the script -->
+      <div data-netlify-recaptcha="true"></div>
     </form>
     <div id="root" class="loading"></div>
     <script type="module" src="/src/main.tsx"></script>
     
+    <!-- Google reCAPTCHA script (ensures widget renders on visible form) -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <script>
       // Remove loading class once page is loaded
       window.addEventListener('load', function() {
