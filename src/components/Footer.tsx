@@ -35,12 +35,16 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Axio Consultores
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                Más de 15 años brindando soluciones contables y financieras que inspiran confianza y generan resultados.
-              </p>
+              <a href="#home" aria-label="Ir al inicio" className="inline-flex items-center">
+                <img
+                  src="/media/logo.png"
+                  alt="Axio Consultores"
+                  className="h-20 md:h-24 w-auto object-contain invert mb-4"
+                />
+              </a>
+               <p className="text-gray-400 leading-relaxed">
+                 Más de 15 años brindando soluciones contables y financieras que inspiran confianza y generan resultados.
+               </p>
             </div>
             
             <div className="flex space-x-4">

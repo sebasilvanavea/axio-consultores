@@ -1,4 +1,4 @@
-import { Calendar, MessageCircle, Calculator, TrendingUp, CheckCircle, Building } from 'lucide-react';
+import { MessageCircle, Calculator, TrendingUp, CheckCircle, Building, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { waLink, PHONE_DISPLAY, PHONE_E164 } from '../config';
 
@@ -49,11 +49,6 @@ const Hero = () => {
 
   // Restore interactive preview state (auto-rotate)
   const [active, setActive] = useState(0);
-  const ActiveIcon = services[active].icon;
-  // Ensure uniform bullet layout - always show exactly 4 bullets (2x2 in mobile)
-  const currentBullets = services[active].bullets;
-  // For uniform composition, always render 4 slots with fixed heights
-  const uniformBullets = Array.from({ length: 4 }, (_, i) => currentBullets[i] || '');
   const [paused, setPaused] = useState(false);
   useEffect(() => {
     const id = setInterval(() => {
@@ -78,7 +73,6 @@ const Hero = () => {
       {/* Top Banner */}
       <div className="bg-warm-800 dark:bg-gray-700 text-white py-2 text-center">
         <div className="flex items-center justify-center gap-2 text-sm">
-          <Calendar className="w-4 h-4" />
           <span>
             📅 Agenda una reunión sin costo{' '}
             <a href={`tel:${PHONE_E164}`} className="underline font-medium">
@@ -121,9 +115,6 @@ const Hero = () => {
               <div className="space-y-6">
                 {/* Promo badges */}
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white text-sm w-max shadow">
-                    🎁 Primera asesoría gratis
-                  </span>
                   <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 dark:bg-sage-900/30 dark:text-sage-300 text-sm w-max border border-primary-200/60 dark:border-sage-700">
                     Impulsa tu negocio con excelencia e innovación
                   </span>
@@ -170,120 +161,188 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Right Content - Chips above auto-changing preview card */}
-            <div className="relative animate-slide-up" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-              {/* Service selector chips */}
-              <div className="mb-4 sm:mb-5">
-                <div className="flex flex-wrap gap-2">
+            {/* Right Content - Modern Card Carousel */}
+            <div className="relative animate-slide-up">
+              
+
+              {/* Innovative Card Carousel */}
+              <div className="relative overflow-hidden rounded-3xl group">
+                {/* Background gradient that changes with active service */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${services[active].gradient} transition-all duration-700`} />
+                
+                {/* Single Card Display with improved transitions */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setPaused(true)} 
+                  onMouseLeave={() => setPaused(false)}
+                >
+                  {services.map((service, index) => {
+                    const ServiceIcon = service.icon;
+                    const isActive = index === active;
+                    
+                    return (
+                      <div
+                        key={service.key}
+                        className={`transition-all duration-1000 ease-in-out ${
+                          isActive 
+                            ? 'opacity-100 scale-100 relative z-10 translate-x-0' 
+                            : 'opacity-0 scale-95 absolute inset-0 pointer-events-none translate-x-4'
+                        }`}
+                      >
+                        <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/30 dark:border-gray-700/30 min-h-[440px] sm:min-h-[460px] lg:min-h-[500px] flex flex-col overflow-hidden">
+                          
+                          {/* Static promo badge (top-left inside the card) */}
+                          <div className="absolute top-3 left-3 z-20">
+                            <div className="inline-flex items-center gap-2 h-7 px-3 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white text-xs font-semibold shadow-md">
+                              <span>🎁 Primera asesoría gratis</span>
+                            </div>
+
+                          </div>
+
+                          {/* Subtle floating animation background accent */}
+                          <div className="absolute top-4 right-4 w-24 h-24 bg-gradient-to-br from-primary-100/20 to-secondary-100/20 dark:from-primary-900/10 dark:to-secondary-900/10 rounded-full blur-2xl animate-pulse" />
+
+                          {/* Header with improved spacing */}
+                          <div className="flex items-start gap-5 mb-8 pt-8 sm:pt-10">
+                            <div className="relative w-18 h-18 rounded-3xl bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center shadow-xl flex-shrink-0 border border-white/50 dark:border-gray-600/50">
+                              <ServiceIcon className="w-9 h-9 text-primary-600 dark:text-sage-400" />
+                              {/* Icon glow effect */}
+                              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary-400/20 to-secondary-400/20 blur-md" />
+                            </div>
+                            <div className="flex-1 pt-1">
+                              <div className="flex items-center gap-3 mb-3 min-w-0">
+                                <h3 className="text-xl sm:text-2xl font-bold text-warm-900 dark:text-white leading-tight whitespace-nowrap truncate">
+                                  {service.name}
+                                </h3>
+                                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 dark:bg-gradient-to-r dark:from-sage-900/40 dark:to-gray-800/40 dark:text-sage-300 border border-primary-200/60 dark:border-sage-700/60 shadow-sm">
+                                  {service.tag}
+                                </span>
+                              </div>
+                              <div className="h-[56px] sm:h-[64px] overflow-hidden">
+                                <p className="text-warm-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed font-medium line-clamp-2">
+                                  {service.desc}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Enhanced Features Grid */}
+                          <div className="mt-1 flex-1">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 content-start h-[112px] sm:h-[120px]">
+                              {service.bullets.slice(0, 4).map((bullet, idx) => (
+                                <div key={idx} className="flex items-start gap-2 min-h-[32px] overflow-hidden">
+                                  <div className="w-6 h-6 rounded-full bg-sage-100 dark:bg-sage-800 flex items-center justify-center flex-shrink-0 mt-0.5 shadow">
+                                    <CheckCircle className="w-4 h-4 text-sage-600 dark:text-sage-400" />
+                                  </div>
+                                  <span className="text-sm text-warm-800 dark:text-gray-200 leading-tight line-clamp-2">
+                                    {bullet}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Enhanced Actions */}
+                          <div className="space-y-4">
+                            <a 
+                              href={`#service-${service.key}`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                const targetId = `service-${service.key}`;
+                                const el = document.getElementById(targetId) || document.getElementById('services');
+                                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                if (window.gtag) window.gtag('event', 'cta_click', { location: 'hero_card', target: `#${targetId}`, service: service.name });
+                              }} 
+                              className="group block w-full btn-primary px-6 py-4 text-center rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] transform"
+                            >
+                              <span className="flex items-center justify-center gap-2">
+                                Conocer este servicio
+                                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                              </span>
+                            </a>
+                            <a
+                              href={waLink(`Hola, tengo dudas sobre el servicio de ${service.name}`)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group block w-full btn-secondary px-6 py-4 text-center rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] transform"
+                            >
+                              <span className="flex items-center justify-center gap-2">
+                                <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                                Consultar por WhatsApp
+                              </span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Enhanced Navigation arrows */}
+                <button
+                  type="button"
+                  onClick={() => setActive((prev) => (prev - 1 + services.length) % services.length)}
+                  className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 dark:bg-black/10 backdrop-blur-sm shadow-none border border-white/20 dark:border-white/10 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-white/20 hover:dark:bg-white/20 transition-all duration-300 opacity-10 group-hover:opacity-80 focus:opacity-90 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30 z-20"
+                  aria-label="Servicio anterior"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActive((prev) => (prev + 1) % services.length)}
+                  className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 dark:bg-black/10 backdrop-blur-sm shadow-none border border-white/20 dark:border-white/10 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-white/20 hover:dark:bg-white/20 transition-all duration-300 opacity-10 group-hover:opacity-80 focus:opacity-90 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30 z-20"
+                  aria-label="Siguiente servicio"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+
+                {/* Enhanced Progress bar */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-40 h-2 bg-white/40 dark:bg-gray-700/40 rounded-full overflow-hidden shadow-lg backdrop-blur-sm">
+                  <div 
+                    className="h-full bg-gradient-to-r from-primary-600 to-secondary-500 rounded-full transition-all duration-700 ease-out shadow-lg"
+                    style={{ width: `${((active + 1) / services.length) * 100}%` }}
+                  >
+                    <div className="h-full bg-gradient-to-r from-white/30 to-transparent rounded-full" />
+                  </div>
+                  {/* Progress indicators */}
+                  <div className="absolute inset-0 flex items-center justify-between px-1">
+                    {services.map((_, idx) => (
+                      <div
+                        key={idx}
+                        className={`w-1 h-1 rounded-full transition-all duration-300 ${
+                          idx <= active ? 'bg-white shadow-lg' : 'bg-white/30'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Enhanced service quick selector chips */}
+              <div className="mt-8">
+                <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
                   {services.map((s, i) => (
                     <button
                       key={s.key}
                       type="button"
-                      aria-pressed={active === i}
-                      aria-label={s.name}
                       onClick={() => setActive(i)}
-                      className={`px-4 py-2 rounded-full border transition-all duration-300 ease-soft hover:-translate-y-0.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${
+                      className={`group px-5 py-3 rounded-2xl border-2 transition-all duration-500 text-sm font-bold shadow-lg hover:shadow-xl transform hover:scale-105 ${
                         active === i
-                          ? 'bg-primary-600 text-white border-primary-600 dark:bg-sage-500 dark:border-sage-500'
-                          : 'bg-warm-100 text-warm-800 border-warm-300 hover:bg-warm-200 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-600'
+                          ? 'bg-gradient-to-r from-primary-600 to-secondary-500 text-white border-transparent shadow-xl scale-105'
+                          : 'bg-white/70 text-warm-800 border-warm-300/50 hover:bg-white hover:border-primary-300 dark:bg-gray-700/70 dark:text-gray-200 dark:border-gray-600/50 dark:hover:bg-gray-600 dark:hover:border-sage-500'
                       }`}
                     >
-                      <span className="text-sm font-medium">{s.name}</span>
+                      <span className="relative">
+                        {s.name}
+                        {active === i && (
+                          <div className="absolute inset-0 bg-white/20 rounded-xl blur-sm" />
+                        )}
+                      </span>
+                      {active === i && (
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-600/20 to-secondary-500/20 animate-pulse" />
+                      )}
                     </button>
                   ))}
-                </div>
-              </div>
-
-              {/* Auto-rotating preview card */}
-              <div className={`transition-all duration-500 rounded-3xl p-[2px] bg-gradient-to-br ${services[active].gradient}`}>
-                <div
-                  key={services[active].key}
-                  className={`relative rounded-[22px] p-6 sm:p-8 bg-white/70 dark:bg-gray-800/60 backdrop-blur border ${services[active].ring} ring-2 shadow-xl transition-all duration-500 flex flex-col w-full min-h-[440px] md:min-h-[460px] lg:min-h-[480px]`}
-                >
-                  {/* Promo ribbon */}
-                  <div className="absolute -top-3 -left-3 z-10">
-                    <span className="inline-block rotate-[-6deg] bg-gradient-to-r from-primary-600 to-secondary-500 text-white text-xs font-semibold px-3 py-1 rounded-md shadow">
-                      🎁 Asesoría inicial gratis
-                    </span>
-                  </div>
-
-                  {/* Header - Fixed heights for uniform composition */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-xl bg-warm-100 dark:bg-gray-700 flex items-center justify-center shadow-inner flex-shrink-0">
-                      <ActiveIcon className="w-7 h-7 text-primary-600 dark:text-sage-400" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 min-h-[40px]" style={{ minHeight: '40px' }}>
-                        <h3 className="text-2xl font-semibold text-warm-900 dark:text-white leading-tight">{services[active].name}</h3>
-                        <span className="px-2 py-0.5 text-xs rounded-full bg-primary-100 text-primary-700 dark:bg-sage-900/30 dark:text-sage-300 border border-primary-200/60 dark:border-sage-700 flex-shrink-0">{services[active].tag}</span>
-                      </div>
-                      <div className="mt-2 h-[72px] flex items-start" style={{ height: '72px' }}>
-                        <p className="text-warm-700 dark:text-gray-300 leading-relaxed">{services[active].desc}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bullets - Uniform composition for all services with fixed container height */}
-                  <div className="mt-6">
-                    {/* Mobile/Tablet: fixed 2x2 grid - always 4 slots with fixed total height */}
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-3 lg:hidden h-[96px]" style={{ height: '96px' }}>
-                      {uniformBullets.map((bullet, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-start gap-2 h-[40px]" // Fixed height for uniform spacing
-                          style={{ minHeight: '40px' }}
-                        >
-                          {bullet ? (
-                            <>
-                              <CheckCircle className="w-4 h-4 mt-0.5 text-sage-500 flex-shrink-0" />
-                              <span className="text-sm text-warm-800 dark:text-gray-200 leading-tight">
-                                {bullet}
-                              </span>
-                            </>
-                          ) : (
-                            // Invisible placeholder to maintain grid structure
-                            <div className="w-full h-full" aria-hidden="true" />
-                          )}
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Desktop: vertical list - uniform height per bullet with fixed container */}
-                    <div className="hidden lg:block space-y-3 h-[140px]" style={{ height: '140px' }}>
-                      {uniformBullets.map((bullet, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-start gap-3 min-h-[32px]" // Fixed minimum height
-                          style={{ minHeight: '32px' }}
-                        >
-                          {bullet ? (
-                            <>
-                              <CheckCircle className="w-5 h-5 mt-0.5 text-sage-500 flex-shrink-0" />
-                              <span className="text-warm-800 dark:text-gray-200 leading-relaxed">
-                                {bullet}
-                              </span>
-                            </>
-                          ) : (
-                            // Invisible placeholder to maintain vertical spacing
-                            <div className="w-full h-full" aria-hidden="true" />
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="mt-auto pt-6 flex flex-col sm:flex-row gap-3">
-                    <a href="#services" className="btn-primary px-5 py-3">Conocer este servicio</a>
-                    <a
-                      href={waLink(`Hola, tengo dudas sobre el servicio de ${services[active].name}`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-secondary px-5 py-3"
-                    >
-                      Consultar por WhatsApp
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>

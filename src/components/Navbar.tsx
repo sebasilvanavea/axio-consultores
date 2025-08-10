@@ -38,7 +38,7 @@ const Navbar = () => {
               <img
                 src="/media/logo.png"
                 alt="Axio Consultores"
-                className="h-12 w-auto object-contain select-none pointer-events-none transition-all duration-300 dark:invert"
+                className="h-16 md:h-16 w-auto object-contain select-none pointer-events-none transition-all duration-300 dark:invert"
               />
               <div className="leading-tight">
               </div>

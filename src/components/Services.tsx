@@ -118,6 +118,7 @@ const Services = () => {
           {mainServices.map((service, index) => (
             <div
               key={index}
+              id={`service-${index === 0 ? 'contabilidad' : index === 1 ? 'remuneraciones' : index === 2 ? 'contabilidad-completa' : 'creacion-empresas'}`}
               className={`relative p-6 sm:p-8 rounded-3xl transition-all duration-500 hover:shadow-2xl transform hover:scale-[1.02] ${
                 index % 4 === 0
                   ? 'bg-gradient-to-r from-warm-100 to-primary-50 dark:from-primary-900/10 dark:to-warm-900/10'
