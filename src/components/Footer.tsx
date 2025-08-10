@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div>
-              <a href="#home" aria-label="Ir al inicio" className="inline-flex items-center justify-center mx-auto md:mx-0">
+              <a href="#home" aria-label="Ir al inicio" className="block w-fit mx-auto md:mx-0">
                 <img
                   src="/media/logo.png"
                   alt="Axio Consultores"
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-lg font-semibold text-white mb-6 text-center md:text-left">
               Enlaces rápidos
             </h4>
@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 transform inline-block text-center md:text-left"
+                    className="block w-fit mx-auto md:mx-0 text-gray-400 hover:text-white transition-all duration-300 transform"
                   >
                     {link.name}
                   </a>
@@ -92,14 +92,14 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-lg font-semibold text-white mb-6 text-center md:text-left">
               Servicios
             </h4>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <span className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 transform inline-block cursor-pointer text-center md:text-left">
+                  <span className="block w-fit mx-auto md:mx-0 text-gray-400 hover:text-white transition-all duration-300 cursor-pointer">
                     {service}
                   </span>
                 </li>
@@ -170,7 +170,7 @@ const Footer: React.FC = () => {
 
             <div className="flex items-center space-x-4">
               <p className="text-gray-400 text-sm text-center md:text-left">
-                © 2024 Axio Consultores. Todos los derechos reservados.
+                © 2025 Axio Consultores. Todos los derechos reservados.
               </p>
               
               <button

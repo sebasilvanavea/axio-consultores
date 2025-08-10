@@ -154,11 +154,6 @@ const Hero = () => {
               </div>
 
               {/* Trust metrics */}
-              {/* Google Reviews badge */}
-              <div className="pt-2 flex items-center justify-center sm:justify-start" aria-label="Valoración en Google 5.0 de 5">
-                <div className="flex items-center gap-2 bg-primary-100 dark:bg-sage-900/20 px-3 py-1.5 rounded">
-                </div>
-              </div>
             </div>
 
             {/* Right Content - Modern Card Carousel */}
@@ -227,10 +222,10 @@ const Hero = () => {
                           </div>
 
                           {/* Enhanced Features Grid */}
-                          <div className="mt-1 flex-1">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 content-start h-[112px] sm:h-[120px]">
+                          <div className="mt-1 mb-4 sm:mb-5 flex-1">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 content-start h-[112px] sm:h-[120px] px-1 sm:px-2">
                               {service.bullets.slice(0, 4).map((bullet, idx) => (
-                                <div key={idx} className="flex items-start gap-2 min-h-[32px] overflow-hidden">
+                                <div key={idx} className="flex items-start gap-2 sm:gap-3 min-h-[32px] overflow-hidden">
                                   <div className="w-6 h-6 rounded-full bg-sage-100 dark:bg-sage-800 flex items-center justify-center flex-shrink-0 mt-0.5 shadow">
                                     <CheckCircle className="w-4 h-4 text-sage-600 dark:text-sage-400" />
                                   </div>
@@ -243,7 +238,7 @@ const Hero = () => {
                           </div>
 
                           {/* Enhanced Actions */}
-                          <div className="space-y-4">
+                          <div className="space-y-4 pt-2 sm:pt-3">
                             <a 
                               href={`#service-${service.key}`}
                               onClick={(e) => {
