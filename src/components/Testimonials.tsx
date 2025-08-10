@@ -71,12 +71,12 @@ const Testimonials = () => {
 								{[...Array(testimonial.rating)].map((_, i) => (
 									<Star
 										key={i}
-										className="h-4 w-4 md:h-5 md:w-5 text-sage-400 fill-current transition-transform duration-300 hover:scale-125"
+										className="h-5 w-5 text-sage-400 fill-current transition-transform duration-300 hover:scale-125"
 									/>
 								))}
 							</div>
 
-							<p className="text-warm-700 dark:text-gray-300 mb-6 leading-relaxed text-sm md:text-base transition-colors duration-300">
+							<p className="text-warm-700 dark:text-gray-300 mb-6 leading-relaxed text-sm transition-colors duration-300">
 								{testimonial.content}
 							</p>
 
@@ -87,13 +87,13 @@ const Testimonials = () => {
 									width={48}
 									height={48}
 									loading="lazy"
-									className="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover mr-3 md:mr-4 transition-transform duration-300 hover:scale-110"
+									className="h-12 w-12 rounded-full object-cover mr-4 transition-transform duration-300 hover:scale-110"
 								/>
 								<div>
-									<h4 className="font-semibold text-warm-900 dark:text-white text-sm md:text-base transition-colors duration-300">
+									<h4 className="font-semibold text-warm-900 dark:text-white text-sm transition-colors duration-300">
 										{testimonial.name}
 									</h4>
-									<p className="text-xs md:text-sm text-warm-500 dark:text-gray-400 transition-colors duration-300">
+									<p className="text-xs text-warm-500 dark:text-gray-400 transition-colors duration-300">
 										{testimonial.company}
 									</p>
 								</div>
@@ -101,44 +101,7 @@ const Testimonials = () => {
 						</div>
 					))}
 				</div>
-
 				{/* Trust Indicators */}
-				<div className="mt-12 md:mt-16 text-center">
-					<div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-						<div className="text-center transform transition-all duration-300 hover:scale-110">
-							<div className="text-2xl md:text-3xl font-bold text-warm-900 dark:text-white transition-colors duration-300">
-								+1500
-							</div>
-							<div className="text-[11px] md:text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide transition-colors duration-300">
-								EMPRESAS CREADAS
-							</div>
-						</div>
-						<div className="text-center transform transition-all duration-300 hover:scale-110">
-							<div className="text-2xl md:text-3xl font-bold text-warm-900 dark:text-white transition-colors duration-300">
-								+2000
-							</div>
-							<div className="text-[11px] md:text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide transition-colors duration-300">
-								CLIENTES SATISFECHOS
-							</div>
-						</div>
-						<div className="text-center transform transition-all duration-300 hover:scale-110">
-							<div className="text-2xl md:text-3xl font-bold text-warm-900 dark:text-white transition-colors duration-300">
-								+850
-							</div>
-							<div className="text-[11px] md:text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide transition-colors duration-300">
-								OFICINAS VIRTUALES
-							</div>
-						</div>
-						<div className="text-center transform transition-all duration-300 hover:scale-110">
-							<div className="text-2xl md:text-3xl font-bold text-warm-900 dark:text-white transition-colors duration-300">
-								+1600
-							</div>
-							<div className="text-[11px] md:text-sm text-warm-600 dark:text-gray-400 uppercase tracking-wide transition-colors duration-300">
-								TAZAS DE CAFÉ
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</section>
 	);

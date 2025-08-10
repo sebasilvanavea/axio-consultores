@@ -38,7 +38,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-warm-50 dark:bg-gray-900 transition-colors duration-300 pb-20 md:pb-0">
+      <div className="min-h-screen bg-warm-50 dark:bg-gray-900 transition-colors duration-300 pb-0">
         <Navbar />
         <main id="main">
           <Hero />

@@ -30,24 +30,24 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-gray-900 dark:bg-black text-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
           {/* Company Info */}
           <div className="space-y-6">
             <div>
-              <a href="#home" aria-label="Ir al inicio" className="inline-flex items-center">
+              <a href="#home" aria-label="Ir al inicio" className="inline-flex items-center justify-center mx-auto md:mx-0">
                 <img
                   src="/media/logo.png"
                   alt="Axio Consultores"
                   className="h-20 md:h-24 w-auto object-contain invert mb-4"
                 />
               </a>
-               <p className="text-gray-400 leading-relaxed">
+               <p className="text-gray-400 leading-relaxed text-center md:text-left">
                  Más de 15 años brindando soluciones contables y financieras que inspiran confianza y generan resultados.
                </p>
-            </div>
-            
-            <div className="flex space-x-4">
+             </div>
+             
+            <div className="flex space-x-4 justify-center md:justify-start">
               <a
                 href="https://linkedin.com/company/axio-consultores"
                 className="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-all duration-300 group transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-400"
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">
+            <h4 className="text-lg font-semibold text-white mb-6 text-center md:text-left">
               Enlaces rápidos
             </h4>
             <ul className="space-y-3">
@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 transform inline-block"
+                    className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 transform inline-block text-center md:text-left"
                   >
                     {link.name}
                   </a>
@@ -93,13 +93,13 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">
+            <h4 className="text-lg font-semibold text-white mb-6 text-center md:text-left">
               Servicios
             </h4>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <span className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 transform inline-block cursor-pointer">
+                  <span className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 transform inline-block cursor-pointer text-center md:text-left">
                     {service}
                   </span>
                 </li>
@@ -109,10 +109,10 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">
+            <h4 className="text-lg font-semibold text-white mb-6 text-center md:text-left">
               Contacto
             </h4>
-            <div className="space-y-4">
+            <div className="space-y-4 text-center md:text-left">
               <div>
                 <p className="text-gray-400 text-sm mb-1">Email</p>
                 <a
@@ -156,7 +156,7 @@ const Footer: React.FC = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap gap-6 justify-center md:justify-start">
               {legalLinks.map((link) => (
                 <a
                   key={link}
@@ -169,7 +169,7 @@ const Footer: React.FC = () => {
             </div>
 
             <div className="flex items-center space-x-4">
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-400 text-sm text-center md:text-left">
                 © 2024 Axio Consultores. Todos los derechos reservados.
               </p>
               
