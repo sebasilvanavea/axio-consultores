@@ -212,7 +212,7 @@ const Hero = () => {
                                 </span>
                               </div>
                               <div className="flex items-center gap-3 mb-3 min-w-0 h-8 sm:h-10 overflow-hidden">
-                                <h3 className={`font-bold text-warm-900 dark:text-white leading-tight whitespace-nowrap truncate ${service.key === 'regularizaciones' ? 'text-xl' : 'text-xl sm:text-2xl'}`}>
+                                <h3 className={`font-bold text-warm-900 dark:text-white leading-tight whitespace-nowrap truncate text-xl sm:text-2xl`}>
                                   {service.key === 'regularizaciones' ? (
                                     <>
                                       <span className="sm:hidden">Regularizaciones SII</span>
@@ -226,8 +226,8 @@ const Hero = () => {
                                   {service.tag}
                                 </span>
                               </div>
-                              <div className={`${service.key === 'regularizaciones' ? 'h-[56px]' : 'h-[56px] sm:h-[64px]'} overflow-hidden`}>
-                                <p className={`text-warm-700 dark:text-gray-300 leading-relaxed font-medium line-clamp-2 ${service.key === 'regularizaciones' ? 'text-sm' : 'text-sm sm:text-base'}`}>
+                              <div className={`h-[56px] sm:h-[64px] overflow-hidden`}>
+                                <p className={`text-warm-700 dark:text-gray-300 leading-relaxed font-medium line-clamp-2 text-sm sm:text-base`}>
                                   {service.desc}
                                 </p>
                               </div>
@@ -236,7 +236,7 @@ const Hero = () => {
 
                           {/* Enhanced Features Grid */}
                           <div className="mt-1 mb-4 sm:mb-5 flex-1">
-                            <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 content-start px-1 sm:px-2 ${service.key === 'regularizaciones' ? 'h-[112px]' : 'h-[112px] sm:h-[120px]'}`}>
+                            <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 content-start px-1 sm:px-2 h-[112px] sm:h-[120px]`}>
                               {service.bullets.slice(0, 4).map((bullet, idx) => (
                                 <div key={idx} className="flex items-start gap-2 sm:gap-3 min-h-[32px] overflow-hidden">
                                   <div className="w-6 h-6 rounded-full bg-sage-100 dark:bg-sage-800 flex items-center justify-center flex-shrink-0 mt-0.5 shadow">
